@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background putih untuk card -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF"/>
+        </shape>
+    </item>
+
+    <!-- Setengah oval di bagian atas -->
+    <item android:bottom="60dp">
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF"/>
+            <size
+                android:width="1000dp"
+            android:height="120dp"/>
+        </shape>
+    </item>
+</layer-list>

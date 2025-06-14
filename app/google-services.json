@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1083119029036",
+    "project_id": "greatchem12",
+    "storage_bucket": "greatchem12.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083119029036:android:c61547562376cef4767a89",
+        "android_client_info": {
+          "package_name": "com.example.greatchem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU86X0QexFYh9_3Baa9vhj4syoMnVbNIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
