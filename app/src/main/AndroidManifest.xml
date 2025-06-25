@@ -18,7 +18,7 @@
         <activity
 
             android:name=".presentation.splash.SplashActivity"
-            android:label="@string/title_activity_splash_screen"
+            android:label="@string/app_name"
             android:theme="@style/Theme.GreatChem"
             android:exported="true">
             <intent-filter>
