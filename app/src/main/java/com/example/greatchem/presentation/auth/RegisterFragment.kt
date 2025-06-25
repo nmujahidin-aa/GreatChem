@@ -14,18 +14,23 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import com.example.greatchem.App
 import com.example.greatchem.R
+import com.example.greatchem.utils.ToastUtils
+import com.example.greatchem.utils.ToastUtils.CustomToastType
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterFragment : Fragment() {
 
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var registerButton: Button
     private lateinit var backToLoginTextView: TextView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +43,7 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         firebaseAuth = (requireActivity().application as App).firebaseAuth
+        firestore = FirebaseFirestore.getInstance()
 
         emailEditText = view.findViewById(R.id.emailEditText)
         passwordEditText = view.findViewById(R.id.passwordEditText)
@@ -75,9 +81,33 @@ class RegisterFragment : Fragment() {
                 if (task.isSuccessful) {
                     Log.d("RegisterFragment", "createUserWithEmail:success")
                     val user = firebaseAuth.currentUser
-                    Toast.makeText(context, "Pendaftaran Berhasil, silahkan masuk", Toast.LENGTH_SHORT).show()
-                    // Beri tahu AuthActivity bahwa pendaftaran berhasil
-                    setFragmentResult("register_navigation_request", bundleOf("destination" to "auth_success"))
+                    user?.let { currentUser -> // Mengganti 'it' dengan 'currentUser' untuk kejelasan
+                        // Data awal yang ingin disimpan di Firestore
+                        val userData = hashMapOf(
+                            "name" to (currentUser.displayName ?: email), // Gunakan email sebagai default jika display name null
+                            "email" to currentUser.email,
+                            "phone" to null // Default null, pengguna bisa mengisinya nanti di profil
+                        )
+
+                        // Gunakan currentUser.uid di sini
+                        firestore.collection("users").document(currentUser.uid)
+                            .set(userData)
+                            .addOnSuccessListener {
+                                Log.d("RegisterFragment", "User data saved to Firestore successfully for UID: ${currentUser.uid}") // Perbaikan di sini
+                                ToastUtils.showCustomToast(requireContext(), "Berhasil!", "Silahkan masuk", CustomToastType.SUCCESS, Toast.LENGTH_SHORT)
+                                // Beri tahu AuthActivity setelah data Firestore berhasil disimpan
+                                setFragmentResult("register_navigation_request", bundleOf("destination" to "auth_success"))
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e("RegisterFragment", "Error saving user data to Firestore", e)
+                                ToastUtils.showCustomToast(requireContext(), "Gagal!", "Pendaftaran berhasil, tetapi gagal menyimpan data tambahan: ${e.message}", CustomToastType.ERROR, Toast.LENGTH_LONG)
+                                setFragmentResult("register_navigation_request", bundleOf("destination" to "auth_success"))
+                            }
+                    } ?: run {
+                        Log.e("RegisterFragment", "User is null after successful registration.")
+                        ToastUtils.showCustomToast(requireContext(), "Error!", "Pendaftaran berhasil, namun terjadi masalah pada data pengguna.", CustomToastType.ERROR, Toast.LENGTH_LONG)
+                        setFragmentResult("register_navigation_request", bundleOf("destination" to "auth_success"))
+                    }
                 } else {
                     Log.w("RegisterFragment", "createUserWithEmail:failure", task.exception)
                     when (task.exception) {

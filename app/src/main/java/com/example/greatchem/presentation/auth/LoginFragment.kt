@@ -15,6 +15,8 @@ import androidx.fragment.app.setFragmentResult
 import com.google.firebase.auth.FirebaseAuth
 import com.example.greatchem.App
 import com.example.greatchem.R
+import com.example.greatchem.utils.ToastUtils
+import com.example.greatchem.utils.ToastUtils.CustomToastType
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 
 class LoginFragment : Fragment() {
@@ -92,7 +94,7 @@ class LoginFragment : Fragment() {
                 if (task.isSuccessful) {
                     Log.d("LoginFragment", "signInWithEmail:success")
                     val user = firebaseAuth.currentUser
-                    Toast.makeText(context, "Login Berhasil: ${user?.email}", Toast.LENGTH_SHORT).show()
+                    ToastUtils.showCustomToast(requireContext(), "Berhasil!", "Anda masuk sebagai ${user?.email}", CustomToastType.SUCCESS, Toast.LENGTH_SHORT)
                     // Beri tahu AuthActivity bahwa autentikasi berhasil
                     setFragmentResult("auth_navigation_request", bundleOf("destination" to "auth_success"))
                 } else {
