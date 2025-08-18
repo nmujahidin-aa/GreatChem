@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.home.DeveloperInfoFragment">
+
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_second"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/palet2"
+            app:navigationIcon="@drawable/ic_chevron_left"
+            app:title="Info Pengembang"
+            app:titleTextColor="@color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp"> <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Kenali lebih jauh tentang orang di balik GREATCHEM!"
+            android:textColor="@color/palet1"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mari kenali tim kami"
+                android:gravity="center_horizontal"
+                android:textColor="@color/palet1"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_ulfa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_card_petunjuk_media">
+
+                    <ImageView
+                        android:id="@+id/photo_ulfa"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/photo_ulfa" android:scaleType="centerCrop"
+                        android:layout_marginEnd="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/name_ulfa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ulfa Rahmawati"
+                            android:textSize="19sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/palet1" />
+
+                        <TextView
+                            android:id="@+id/position_ulfa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CEO (Chief Executive Officer)"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/palet3" />
+
+                        <TextView
+                            android:id="@+id/prodi_ulfa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/palet2"
+                            android:text="Mahasiswa Prodi S1 Pendidikan Kimia Universitas Negeri Malang"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_shabina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_card_petunjuk_media">
+
+                    <ImageView
+                        android:id="@+id/photo_shabina"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/photo_shabina" android:scaleType="centerCrop"
+                        android:layout_marginEnd="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/name_shabina"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Shabina Echa Triani Putri"
+                            android:textSize="19sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/palet1" />
+
+                        <TextView
+                            android:id="@+id/position_shabina"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CFO (Chief Financial Officer)"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/palet3" />
+
+                        <TextView
+                            android:id="@+id/prodi_shabina"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/palet2"
+                            android:text="Mahasiswa Prodi S1 Pendidikan Matematika Universitas Negeri Malang"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_devinda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_card_petunjuk_media">
+
+                    <ImageView
+                        android:id="@+id/photo_devinda"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/photo_devinda" android:scaleType="centerCrop"
+                        android:layout_marginEnd="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/name_devinda"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Devinda Pertiwi Wulandari"
+                            android:textSize="19sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/palet1" />
+
+                        <TextView
+                            android:id="@+id/position_devinda"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CTO (Chief Technology Officer)"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/palet3" />
+
+                        <TextView
+                            android:id="@+id/prodi_devinda"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/palet2"
+                            android:text="Mahasiswa Prodi S1 Pendidikan Luar Biasa Universitas Negeri Malang"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_husni"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_card_petunjuk_media">
+
+                    <ImageView
+                        android:id="@+id/photo_husni"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/photo_husni" android:scaleType="centerCrop"
+                        android:layout_marginEnd="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/name_husni"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Husni Wahyu Wijaya, S.Pd., M.Si., Ph.D"
+                            android:textSize="19sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/palet1" />
+
+                        <TextView
+                            android:id="@+id/position_husni"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Supervisor"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/palet3" />
+
+                        <TextView
+                            android:id="@+id/prodi_husni"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/palet2"
+                            android:text="Dosen Departemen Kimia Univesritas Negeri Malang"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_candra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_card_petunjuk_media">
+
+                    <ImageView
+                        android:id="@+id/photo_candra"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/photo_candra" android:scaleType="centerCrop"
+                        android:layout_marginEnd="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/name_candra"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nur Candra Eka Setiawan S.Pd., M.Pd."
+                            android:textSize="19sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/palet1" />
+
+                        <TextView
+                            android:id="@+id/position_candra"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Supervisor"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/palet3" />
+
+                        <TextView
+                            android:id="@+id/prodi_candra"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/palet2"
+                            android:text="Dosen Departemen Kimia Univesritas Negeri Malang"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

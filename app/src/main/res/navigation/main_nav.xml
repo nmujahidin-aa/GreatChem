@@ -1,14 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-app:startDestination="@id/homeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
 
     <!-- Home -->
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.greatchem.presentation.home.HomeFragment"
-        android:label="Home" />
+        android:label="Home"
+        tools:ignore="ExtraText">
+        <action
+            android:id="@+id/action_homeFragment_to_mediaInstructionsFragment"
+            app:destination="@+id/mediaInstructionsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_competenceFragment"
+            app:destination="@+id/competenceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mindMapFragment"
+            app:destination="@+id/mindMapFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_educationFragment"
+            app:destination="@+id/educationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_augmentedRealityFragment"
+            app:destination="@+id/augmentedRealityFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_developerInfoFragment"
+            app:destination="@+id/developerInfoFragment" />
+    </fragment>
+
+    <!-- Start: isi dari Home Fragment -->
+    <fragment
+        android:id="@+id/mediaInstructionsFragment"
+        android:name="com.example.greatchem.presentation.home.MediaInstructionsFragment"
+        android:label="Petunjuk Media"
+        tools:layout="@layout/fragment_media_instructions"/>
+    <fragment
+        android:id="@+id/competenceFragment"
+        android:name="com.example.greatchem.presentation.home.CompetenceFragment"
+        android:label="Kompetensi"
+        tools:layout="@layout/fragment_competence"/>
+    <fragment
+        android:id="@+id/mindMapFragment"
+        android:name="com.example.greatchem.presentation.home.MindMapFragment"
+        android:label="Peta Konsep"
+        tools:layout="@layout/fragment_mind_map"/>
+    <fragment
+        android:id="@+id/educationFragment"
+        android:name="com.example.greatchem.presentation.home.EducationFragment"
+        android:label="Edukasi"
+        tools:layout="@layout/fragment_education">
+        <action
+            android:id="@+id/action_educationFragment_to_learningVideosFragment"
+            app:destination="@+id/learningVideosFragment" />
+        <!-- Perbaikan nama action dan destination ke ExerciseFragment -->
+        <action
+            android:id="@+id/action_educationFragment_to_exerciseFragment"
+            app:destination="@+id/exerciseFragment" />
+        <!-- Action BARU untuk ke ExerciseResultFragment dari EducationFragment -->
+        <action
+            android:id="@+id/action_educationFragment_to_exerciseResultFragment"
+            app:destination="@+id/exerciseResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/augmentedRealityFragment"
+        android:name="com.example.greatchem.presentation.home.AugmentedRealityFragment"
+        android:label="Edukasi"
+        tools:layout="@layout/fragment_augmented_reality"/>
+    <fragment
+        android:id="@+id/developerInfoFragment"
+        android:name="com.example.greatchem.presentation.home.DeveloperInfoFragment"
+        android:label="Edukasi"
+        tools:layout="@layout/fragment_developer_info"/>
+    <!-- End: isi dari Home Fragment -->
 
     <!-- Games -->
     <fragment
@@ -42,6 +108,7 @@ app:startDestination="@id/homeFragment">
             app:destination="@id/privacyPolicyFragment" />
     </fragment>
 
+    <!-- Start: isi dari Profile Fragment -->
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.example.greatchem.presentation.profile.AccountFragment"
@@ -77,4 +144,60 @@ app:startDestination="@id/homeFragment">
         android:name="com.example.greatchem.presentation.profile.PrivacyPolicyFragment"
         android:label="Kebijakan Privasi"
         tools:layout="@layout/fragment_privacy_policy" />
+    <!-- End: isi dari Profile Fragment -->
+
+    <!-- Start: isi dari Education Fragment -->
+    <fragment
+        android:id="@+id/learningVideosFragment"
+        android:name="com.example.greatchem.presentation.home.education.LearningVideosFragment"
+        android:label="Video Pembelajaran"
+        tools:layout="@layout/fragment_education_learning_videos" />
+
+    <!-- Perbaikan nama package dan ID untuk ExerciseFragment -->
+    <fragment
+        android:id="@+id/exerciseFragment"
+        android:name="com.example.greatchem.presentation.home.education.exercise.ExerciseFragment"
+        android:label="Latihan Soal"
+        tools:layout="@layout/fragment_education_excercise">
+    <!-- Action dari ExerciseFragment ke ExerciseResultFragment -->
+    <action
+        android:id="@+id/action_exerciseFragment_to_exerciseResultFragment"
+        app:destination="@id/exerciseResultFragment"
+        app:popUpToInclusive="true"
+        app:popUpTo="@+id/exerciseFragment" />
+</fragment>
+
+    <!-- Fragment BARU: ExerciseResultFragment -->
+    <fragment
+        android:id="@+id/exerciseResultFragment"
+        android:name="com.example.greatchem.presentation.home.education.exercise.ExerciseResultFragment"
+        android:label="Hasil Latihan Soal"
+        tools:layout="@layout/fragment_education_exercise_result">
+    <!-- Arguments untuk menerima data skor -->
+    <argument
+        android:name="score"
+        app:argType="integer"
+        android:defaultValue="0" />
+    <argument
+        android:name="passed"
+        app:argType="boolean"
+        android:defaultValue="false" />
+    <argument
+        android:name="canRetake"
+        app:argType="boolean"
+        android:defaultValue="false" />
+    <!-- Action dari ExerciseResultFragment kembali ke ExerciseFragment (untuk mengulang) -->
+    <action
+        android:id="@+id/action_exerciseResultFragment_to_exerciseFragment"
+        app:destination="@id/exerciseFragment"
+        app:popUpToInclusive="true"
+        app:popUpTo="@+id/exerciseResultFragment" />
+    <!-- Action untuk kembali ke EducationFragment (jika sudah selesai/kembali ke menu) -->
+    <action
+        android:id="@+id/action_exerciseResultFragment_to_educationFragment"
+        app:destination="@id/educationFragment"
+        app:popUpTo="@+id/educationFragment"
+        app:popUpToInclusive="true" />
+    </fragment>
+    <!-- End: isi dari Education Fragment -->
 </navigation>

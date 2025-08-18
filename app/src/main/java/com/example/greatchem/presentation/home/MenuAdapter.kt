@@ -3,16 +3,15 @@ package com.example.greatchem.presentation.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.greatchem.R // Pastikan R Anda mengarah ke resources proyek Anda
+import com.example.greatchem.R
 
 // Adapter untuk RecyclerView
 class MenuAdapter(
-    private val menuList: List<HomeFragment.MenuItem>, // Daftar data MenuItem
-    private val onItemClick: (HomeFragment.MenuItem) -> Unit // Lambda untuk callback klik item
+    private var menuList: List<HomeFragment.MenuItem>, // Mengubah dari val menjadi var
+    private val onItemClick: (HomeFragment.MenuItem) -> Unit
 ) : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
 
     // ViewHolder adalah wadah untuk tampilan setiap item dalam daftar
@@ -26,9 +25,7 @@ class MenuAdapter(
     // Dipanggil ketika RecyclerView membutuhkan ViewHolder baru
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.home_menu_item, parent, false) // Inflate layout item kartu Anda
-        // Jika nama layout Anda home_menu_item, ganti di sini:
-        // .inflate(R.layout.home_menu_item, parent, false)
+            .inflate(R.layout.home_menu_item, parent, false)
         return MenuViewHolder(view)
     }
 
@@ -43,14 +40,22 @@ class MenuAdapter(
         holder.itemView.setOnClickListener {
             onItemClick(currentItem)
         }
-
-        // Contoh: Logika untuk ikon favorit (misalnya, mengubah gambar jika difavoritkan)
-        // holder.favoriteIcon.setImageResource(if (currentItem.isFavorited) R.drawable.ic_heart_filled else R.drawable.ic_heart_outline)
-        // holder.favoriteIcon.setOnClickListener { /* Tambahkan logika favorit di sini */ }
     }
 
     // Mengembalikan jumlah total item dalam daftar
     override fun getItemCount(): Int {
         return menuList.size
+    }
+
+    /**
+     * Memperbarui daftar item menu di adapter.
+     * Setelah daftar diperbarui, notifyDataSetChanged() dipanggil untuk
+     * memberi tahu RecyclerView agar me-render ulang tampilannya.
+     *
+     * @param newList Daftar item menu yang baru.
+     */
+    fun updateList(newList: List<HomeFragment.MenuItem>) {
+        menuList = newList
+        notifyDataSetChanged() // Memberi tahu RecyclerView bahwa datanya telah berubah
     }
 }

@@ -1,5 +1,6 @@
 package com.example.greatchem.presentation.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -8,15 +9,23 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.greatchem.R
 import com.example.greatchem.databinding.ActivityMainBinding
+import com.example.greatchem.services.BacksoundMusicServices
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    private lateinit var musicIntent: Intent
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Inisialisasi Intent untuk Service musik
+        musicIntent = Intent(this, BacksoundMusicServices::class.java)
+        // Mulai Service musik saat MainActivity dibuat
+        startService(musicIntent)
 
         // Setup Navigation
         val navHostFragment = supportFragmentManager
@@ -40,5 +49,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Hentikan Service musik saat MainActivity diha ncurkan
+        stopService(musicIntent)
     }
 }

@@ -20,12 +20,27 @@
         app:navGraph="@navigation/main_nav" />
 
     <!-- Bottom Navigation Bar -->
+    <View
+        android:id="@+id/shadow_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/palet5"
+        android:elevation="80dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:elevation="4dp"
+        android:background="@color/white"
+        android:paddingTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/icon_color"
+        app:itemTextColor="@color/icon_color"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
