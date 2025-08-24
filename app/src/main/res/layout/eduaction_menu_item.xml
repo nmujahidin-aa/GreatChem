@@ -27,7 +27,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:padding="16dp"
-            android:background="#80000000">
+            android:background="#44000000">
             <ImageView
                 android:id="@+id/card_icon"
                 android:layout_width="64dp"

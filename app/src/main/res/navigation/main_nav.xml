@@ -55,14 +55,16 @@
         <action
             android:id="@+id/action_educationFragment_to_learningVideosFragment"
             app:destination="@+id/learningVideosFragment" />
-        <!-- Perbaikan nama action dan destination ke ExerciseFragment -->
         <action
             android:id="@+id/action_educationFragment_to_exerciseFragment"
             app:destination="@+id/exerciseFragment" />
-        <!-- Action BARU untuk ke ExerciseResultFragment dari EducationFragment -->
         <action
             android:id="@+id/action_educationFragment_to_exerciseResultFragment"
             app:destination="@+id/exerciseResultFragment" />
+        <action
+            android:id="@+id/action_educationFragment_to_virtualLabFragment"
+            app:destination="@+id/virtualLabFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/augmentedRealityFragment"
@@ -159,13 +161,18 @@
         android:name="com.example.greatchem.presentation.home.education.exercise.ExerciseFragment"
         android:label="Latihan Soal"
         tools:layout="@layout/fragment_education_excercise">
-    <!-- Action dari ExerciseFragment ke ExerciseResultFragment -->
-    <action
-        android:id="@+id/action_exerciseFragment_to_exerciseResultFragment"
-        app:destination="@id/exerciseResultFragment"
-        app:popUpToInclusive="true"
-        app:popUpTo="@+id/exerciseFragment" />
-</fragment>
+        <action
+            android:id="@+id/action_exerciseFragment_to_exerciseResultFragment"
+            app:destination="@id/exerciseResultFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@+id/exerciseFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/virtualLabFragment"
+        android:name="com.example.greatchem.presentation.home.education.VirtualLaboratoryFragment"
+        android:label="Virtual Laboratory"
+        tools:layout="@layout/fragment_education_virtual_laboratory" />
 
     <!-- Fragment BARU: ExerciseResultFragment -->
     <fragment
@@ -173,31 +180,31 @@
         android:name="com.example.greatchem.presentation.home.education.exercise.ExerciseResultFragment"
         android:label="Hasil Latihan Soal"
         tools:layout="@layout/fragment_education_exercise_result">
-    <!-- Arguments untuk menerima data skor -->
-    <argument
-        android:name="score"
-        app:argType="integer"
-        android:defaultValue="0" />
-    <argument
-        android:name="passed"
-        app:argType="boolean"
-        android:defaultValue="false" />
-    <argument
-        android:name="canRetake"
-        app:argType="boolean"
-        android:defaultValue="false" />
-    <!-- Action dari ExerciseResultFragment kembali ke ExerciseFragment (untuk mengulang) -->
-    <action
-        android:id="@+id/action_exerciseResultFragment_to_exerciseFragment"
-        app:destination="@id/exerciseFragment"
-        app:popUpToInclusive="true"
-        app:popUpTo="@+id/exerciseResultFragment" />
-    <!-- Action untuk kembali ke EducationFragment (jika sudah selesai/kembali ke menu) -->
-    <action
-        android:id="@+id/action_exerciseResultFragment_to_educationFragment"
-        app:destination="@id/educationFragment"
-        app:popUpTo="@+id/educationFragment"
-        app:popUpToInclusive="true" />
+        <!-- Arguments untuk menerima data skor -->
+        <argument
+            android:name="score"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="passed"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="canRetake"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <!-- Action dari ExerciseResultFragment kembali ke ExerciseFragment (untuk mengulang) -->
+        <action
+            android:id="@+id/action_exerciseResultFragment_to_exerciseFragment"
+            app:destination="@id/exerciseFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@+id/exerciseResultFragment" />
+        <!-- Action untuk kembali ke EducationFragment (jika sudah selesai/kembali ke menu) -->
+        <action
+            android:id="@+id/action_exerciseResultFragment_to_educationFragment"
+            app:destination="@id/educationFragment"
+            app:popUpTo="@+id/educationFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <!-- End: isi dari Education Fragment -->
 </navigation>

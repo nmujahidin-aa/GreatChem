@@ -48,7 +48,7 @@ class EducationFragment : Fragment() {
         // Mengakses CardView menggunakan findViewById pada root view fragment
         setupMenuCard(
             view.findViewById(R.id.include_card_video_pembelajaran),
-            R.drawable.bg_menu_video_pembelajaran,
+            R.drawable.bg_menu_video_pembelajaran_2,
             R.drawable.ic_video,
             "Video Pembelajaran",
             {
@@ -59,18 +59,18 @@ class EducationFragment : Fragment() {
 
         setupMenuCard(
             view.findViewById(R.id.include_card_virtual_lab),
-            R.drawable.bg_menu_virtual_lab,
+            R.drawable.bg_menu_virtual_lab_2,
             R.drawable.ic_virtual_lab,
             "Virtual-Lab",
             {
                 println("Virtual-Lab diklik!")
-                // findNavController().navigate(R.id.action_educationFragment_to_virtualLabFragment)
+                findNavController().navigate(R.id.action_educationFragment_to_virtualLabFragment)
             }
         )
 
         setupMenuCard(
             binding.includeCardLatihanSoal.root,
-            R.drawable.bg_menu_latihan_soal,
+            R.drawable.bg_menu_latihan_soal_2,
             R.drawable.ic_exercise,
             "Latihan Soal",
             {

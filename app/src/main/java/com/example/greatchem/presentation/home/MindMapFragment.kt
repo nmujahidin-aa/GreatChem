@@ -34,7 +34,7 @@ class MindMapFragment : Fragment() {
         }
 
         val mindMapImage: PhotoView = binding.mindMapImage
-        mindMapImage.setImageResource(R.drawable.img_peta_konsep)
+        mindMapImage.setImageResource(R.drawable.img_peta_konsep_2)
     }
 
     override fun onDestroyView() {

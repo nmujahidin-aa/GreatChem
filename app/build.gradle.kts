@@ -86,5 +86,5 @@ dependencies {
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
     // Lottie Files
-    implementation("com.github.LottieFiles:dotlottie-android:0.0.3")
+    implementation("com.github.LottieFiles:dotlottie-android:0.5.0")
 }
